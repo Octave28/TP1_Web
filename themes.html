@@ -1,0 +1,61 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const formulaire = document.getElementById("formCreation");
+    const message = document.getElementById("message");
+
+    formulaire.addEventListener("submit", function (evenement) {
+        evenement.preventDefault(); // Empêcher le rechargement de la page
+
+        // Récupérer les valeurs du formulaire
+        const prenom = document.getElementById("prenom").value.trim();
+        const nom = document.getElementById("nom").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const motDePasse = document.getElementById("mot-de-passe").value.trim();
+
+        // Valider les champs
+        if (!prenom || !nom || !email || !motDePasse) {
+            afficherMessage("Tous les champs sont obligatoires.", "erreur");
+            return;
+        }
+
+        if (!validerEmail(email)) {
+            afficherMessage("Veuillez entrer une adresse email valide.", "erreur");
+            return;
+        }
+
+        if (motDePasse.length < 8) {
+            afficherMessage("Le mot de passe doit contenir au moins 8 caractères.", "erreur");
+            return;
+        }
+
+        // Simuler la création du compte
+        const compteCree = creerCompte(prenom, nom, email, motDePasse);
+
+        if (compteCree) {
+            afficherMessage("Compte créé avec succès !", "succes");
+            formulaire.reset(); // Réinitialiser le formulaire
+        } else {
+            afficherMessage("Une erreur s'est produite lors de la création du compte.", "erreur");
+        }
+    });
+
+    // Fonctions
+    // 
+    // Fonction pour valider l'email
+    function validerEmail(email) {
+        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regexEmail.test(email);
+    }
+
+    // Fonction pour afficher un message à l'utilisateur
+    function afficherMessage(texte, type) {
+        message.textContent = texte;
+        message.className = type; // Ajouter une classe pour le style (succes ou erreur)
+    }
+
+    // Fonction pour simuler la création du compte
+    function creerCompte(prenom, nom, email, motDePasse) {
+        // Ici, vous pouvez ajouter une logique pour envoyer les données au serveur
+        console.log("Compte créé :", { prenom, nom, email, motDePasse });
+        return true; // Simuler une création réussie
+    }
+});

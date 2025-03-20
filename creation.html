@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaires de connexion et inscription</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-box" id="register-form">
+            <h2>Créer un compte</h2>
+            <form action="accueil.php" method="POST" id="formCreation">
+                <label for="Nom">Nom :</label>
+                <input type="nom" id="nom" name="nom" required>
+
+                <label for="Prenom">Prenom :</label>
+                <input type="prenom" id="prenom" name="prenom" required>
+
+                <label for="new-email">Email :</label>
+                <input type="email" id="new-email" name="email" required>
+                
+                <label for="new-password">Mot de passe :</label>
+                <input type="password" id="new-password" name="password" required>
+                
+                <label for="confirm-password">Confirmer le mot de passe :</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+                
+                <button type="submit">Créer un compte</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

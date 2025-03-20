@@ -1,0 +1,311 @@
+/* Mise en forme CSS */
+
+head{
+    display: none; 
+    text-align: center;  
+}
+
+head{
+    padding: 20px;   
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+p{
+    font-family: cursive;
+}
+
+
+/* Arrière plan dynamique */
+
+.background-slider {
+    /* position: fixed; */
+    top: 0;
+    left: 0;
+    width: 95%;
+    height: 100vh;
+    background-size : cover;
+    background-position: center;
+    transition: background-image 1.5s ease-in-out;
+}
+
+
+.resume-forward {
+    display: flex; /* Utilisation de Flexbox pour aligner les éléments */
+    align-items: center; /* Alignement des éléments en haut */
+    gap: 20px; /* Espace entre le texte et les images */
+    width: 95% ; /* Largeur maximale pour encadrer le contenu */
+    margin: 3% auto; /* Centrer le contenu */
+    padding: 20px; /* Espace intérieur */
+    border: 1px solid #000000; /* Encadrer le contenu */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    
+}
+
+/* Style pour le texte*/
+.texte-resume {
+    flex: 1; /* Le texte prend l'espace disponible */
+}
+
+/* Style pour le conteneur des images */
+.images-container {
+    display: flex; /* Aligner les images côte à côte */
+    gap: 10px; /* Espace entre les images */
+}
+
+/* Style pour les images */
+.ImageLogo {
+    max-width: 400%; /* Largeur maximale des images */
+    width: 20%;
+    margin: 2%;
+    height: auto; /* Hauteur automatique pour conserver les proportions */
+    border-radius: 8px; /* Coins arrondis */
+}
+
+nav a {
+    color: #ccc;
+    text-decoration: none;
+    display: inline-block;
+    width: 20%;
+    text-align: center;
+    height: 1em;
+}
+
+
+nav {
+    background-color: green;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  /* Meilleur alignement */
+    padding: 18px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 15px 25px;  /* Définir le padding dès le départ */
+    display: inline-block; /* Permet au padding de bien s’appliquer */
+    transition: all 0.3s ease-in-out; /* Animation fluide */
+}
+
+nav a:hover {
+    background-color: black;
+    color: white;
+    font-size: large;
+    padding: 15px 25px; /* Même padding pour éviter le déplacement */
+}
+
+
+/* Style de base pour le footer */
+footer {
+    background-color: #000; /* Fond noir */
+    font-size: 1em; /* Taille de la police */
+    color: #ccc; /* Couleur du texte */
+    margin-top: 0em; /* Marge en haut */
+    padding: 1%; /* Espace intérieur */
+    display: flex; /* Utilisation de Flexbox pour aligner les colonnes */
+    justify-content: space-between; /* Répartit l'espace entre les colonnes */
+    flex-wrap: wrap; /* Permet aux colonnes de s'empiler sur les petits écrans */
+    font-family: Helvetica, sans-serif;;
+}
+
+/* Style pour chaque colonne (div) */
+footer div {
+    flex: 1; /* Chaque colonne prend une part égale de l'espace */
+    width: 3%; /* Largeur minimale pour éviter que les colonnes ne deviennent trop étroites */
+    margin: 3%; /* Espace entre les colonnes */
+    unicode-bidi: isolate;
+}
+
+/* Style pour les listes */
+footer ul {
+    list-style-type: none; /* Supprime les puces */
+    margin: 0; /* Supprime les marges par défaut */
+    padding: 2% ; /* Supprime le padding par défaut */
+}
+
+/* Style pour les éléments de liste */
+footer ul li {
+    margin: 2% auto;
+    font-size: 1em; /* Taille de la police légèrement plus grande */
+    color: #ccc; /* Couleur du texte */   
+}
+
+
+/* Style pour les films dans le catalogue */
+
+.film-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.film {
+    position: relative;
+    background-color: #222;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px;
+}
+
+.film img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.film h2 {
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: red;
+    color: white;
+    padding: 5px;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+.new {
+    background-color: yellow;
+    color: black;
+}
+
+.oscars {
+    background-color: gold;
+}
+
+.success {
+    background-color: orange;
+}
+
+
+/* Menu */
+
+menu {
+    position: relative;
+    display: inline-block;
+}
+
+.account-btn {
+    background-color: #FFD700;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.popup {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 8px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+}
+
+.popup .arrow {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid white;
+}
+
+.btn-outline, .btn-full {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-outline {
+    background: none;
+    border: 2px solid #007BFF;
+    color: #007BFF;
+}
+
+.btn-full {
+    background: #007BFF;
+    color: white;
+}
+
+/* Effet d'affichage au survol */
+.menu:hover .popup {
+    display: flex;
+}
+
+
+
+/* Formulairess css  */
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.form-box {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input, select {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    margin-top: 15px;
+    padding: 10px; 
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: green;
+}
