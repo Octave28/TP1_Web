@@ -1,4 +1,9 @@
 <?php
+    require_once 'films.php';
+    $meilleursFilms = array_filter($films, function($film) {
+        return isset($film['labels']['oscars']);
+    });
+
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
     $mail = $_POST['email'];
@@ -8,7 +13,7 @@
 <html lang="fr">
 <head>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/changementImages.js"></script>
+    <script src="./dom.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CinePass</title>
@@ -17,7 +22,7 @@
     
     <nav>
         <a href="index.php">Accueil</a>
-        <a href="catalogue.html">Catalogue</a>
+        <a href="catalogue.php">Catalogue</a>
         <a href="reservation.html">Faire une réservation</a>
         <a href="reservation.html">Vos réservations</a>
         <a href="infos.html">Nous joindre</a>
@@ -34,51 +39,9 @@
                 <h1> Bienvenue, <?php echo $prenom; ?> </h1>
 
                 <h2> Voici une liste de films recommandés pour vous !</h2>
-                
-                <!-- <div class="film-grid">
-
-                    <div class="film">
-                        <img src="Images/deadpool 2.jpg" alt="Black Dog">
-                        <span class="label new">NOUVEAU</span>
-                        <h2>Deadpool 2</h2>
-                    </div>
-
-                    <div class="film">
-                        <img src="Images/Dune-2-Poster-4x5-BW.jpg" alt="À Bicyclette !">
-                        <h2>Dune !</h2>
-                    </div>
-                    <div class="film">
-                        <img src="Images/mission-impossible-dex-reckoning-part-2-poster-by-rahalarts.jpg" alt="Un Parfait Inconnu">
-                        <span class="label oscars">8 OSCARS</span>
-                        <h2>Mission Impossible 2</h2>
-                    </div>
-                    <div class="film">
-                        <img src="Images/Godzilla.jpg" alt="Becoming Led Zeppelin">
-                        <span class="label new">NOUVEAU</span>
-                        <h2>Godzilla</h2>
-                    </div>
-                    <div class="film">
-                        <img src="Images/joker.webp" alt="The Brutalist">
-                        <span class="label oscars">10 NOMINATIONS AUX OSCARS</span>
-                        <h2>Joker</h2>
-                    </div>
-                </div> -->
 
                 <div class="film-grid">
-                <div class="film">
-                    <img src="Images/avatar.jpg" alt="Black Dog">
-                    <span class="label new">NOUVEAU</span>
-                    <h2>Avatar</h2>
-                </div>
-                <div class="film">
-                    <img src="Images/Ghostbusters.jpg" alt="Black Dog">
-                    <h2>Ghostbusters</h2>
-                </div>
-                <div class="film">
-                        <img src="Images/Godzilla.jpg" alt="Becoming Led Zeppelin">
-                        <span class="label new">NOUVEAU</span>
-                        <h2>Godzilla</h2>
-                </div>
+                    <?php afficherFilms($meilleursFilms) ?>
                 </div>
     
             
