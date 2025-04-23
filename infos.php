@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <link rel="stylesheet" href="css/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nous Contacter</title>
 </head>
+
 <body>
     <nav>
+        <img class = "ImageLogo" src="./Images/cinepass.jpeg" alt="Erreur">
         <a href="index.php">Accueil</a>
         <a href="catalogue.html">Catalogue</a>
         <a href="reservation.php">Faire une réservation</a>
@@ -16,7 +19,7 @@
     </nav>
 
     <header>
-        <h1>Vous avez des questions ou besoin d'aide ? Contactez nous !!!</h1>
+        <h1> Vous avez des questions ou besoin d'aide ? Contactez nous !!! </h1>
     </header>
 
     <main>
@@ -43,7 +46,8 @@
        
         
             <div>
-                    <h1>Contacts :</h1>
+                
+                <h1>Contacts :</h1>
 
                 <ul>
                     <li>1XX, rue du Cine Est (Movie), J1X XYZ</li>

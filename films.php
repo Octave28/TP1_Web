@@ -47,7 +47,7 @@ $films = [
 ];
 
 
-//Fonctionner pour rechercher des films
+// Fonctionner pour rechercher des films
 function rechercherFilms($terme) {
     global $films;
     $results = [];
@@ -61,6 +61,7 @@ function rechercherFilms($terme) {
     
     return $results;
 }
+
 // Fonction pour afficher les films :
 
 function afficherFilms(array $films) {
@@ -81,7 +82,6 @@ function afficherFilms(array $films) {
 
 
 // Fonction pour afficher 5 films aléatoires 
-
 
 function afficherFilmsAleatoires($films, $nombre = 5) {
     // Vérifier qu'on ne demande pas plus de films que disponibles
@@ -105,8 +105,7 @@ function afficherFilmsAleatoires($films, $nombre = 5) {
             foreach ($film['labels'] as $class => $label) {
                 echo '<span class="label '.$class.'">'.$label.'</span>';
             }
-        }
-        
+        }     
         echo '<h2>'.htmlspecialchars($film['titre']).'</h2>';
         echo '</div>';
     }

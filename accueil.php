@@ -11,6 +11,7 @@
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <link rel="stylesheet" href="css/style.css">
     <script src="./dom.js"></script>
@@ -21,6 +22,7 @@
 <body>
     
     <nav>
+        <img class = "ImageLogo" src="./Images/cinepass.jpeg" alt="Erreur">
         <a href="index.php">Accueil</a>
         <a href="catalogue.php">Catalogue</a>
         <a href="reservation.html">Faire une réservation</a>
@@ -43,13 +45,13 @@
                 <div class="film-grid">
                     <?php afficherFilms($meilleursFilms) ?>
                 </div>
-    
             
             </div>
 
         </div>
 
     </main>
+    
     <footer>
         <div>
             <ul>

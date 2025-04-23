@@ -9,6 +9,10 @@ head{
     padding: 20px;   
 }
 
+header{
+    padding-left: 1.5%;
+}
+
 
 body {
     font-family: Arial, Helvetica, sans-serif;
@@ -19,11 +23,12 @@ p{
     font-family: cursive;
 }
 
-
 /* Arrière plan dynamique */
 
 .background-slider {
     /* position: fixed; */
+    display: flex;
+    flex-direction: column;
     top: 0;
     left: 0;
     width: 97%;
@@ -45,20 +50,18 @@ p{
 
 }
 .resume-forward {
-    /* display: flex; Utilisation de Flexbox pour aligner les éléments */
     align-items: center; /* Alignement des éléments en haut */
     gap: 20px; /* Espace entre le texte et les images */
     width: 95% ; /* Largeur maximale pour encadrer le contenu */
     margin: 3% auto; /* Centrer le contenu */
     padding: 20px; /* Espace intérieur */
-    /* border: 1px solid #000000; Encadrer le contenu */
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); Ombre légère */
-    
 }
 
 /* Style pour le texte*/
 .texte-resume {
-    flex: 1; /* Le texte prend l'espace disponible */
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -75,11 +78,9 @@ p{
 
 /* Style pour les images */
 .ImageLogo {
-    max-width: 400%; /* Largeur maximale des images */
-    width: 20%;
-    margin: 2%;
-    height: auto; /* Hauteur automatique pour conserver les proportions */
-    border-radius: 8px; /* Coins arrondis */
+    width: 4%;
+    border-radius: 6px; /* Coins arrondis */
+    padding: 0.1%;
 }
 
 nav a {
@@ -95,9 +96,9 @@ nav a {
 nav {
     background-color: green;
     display: flex;
-    justify-content: space-between;
-    align-items: center;  /* Meilleur alignement */
-    padding: 18px;
+    flex-direction: row;
+    align-items: center;
+    padding : 5px;
 }
 
 nav a {
@@ -105,7 +106,7 @@ nav a {
     color: white;
     font-weight: bold;
     padding: 15px 25px;  /* Définir le padding dès le départ */
-    display: inline-block; /* Permet au padding de bien s’appliquer */
+    display: inline-block; /* 
     transition: all 0.3s ease-in-out; /* Animation fluide */
 }
 
@@ -113,7 +114,7 @@ nav a:hover {
     background-color: black;
     color: white;
     font-size: large;
-    padding: 15px 25px; /* Même padding pour éviter le déplacement */
+    padding: 15px 25px; 
 }
 
 
@@ -155,11 +156,20 @@ footer ul li {
 
 /* Style pour les films dans le catalogue */
 
+.texte-resume film-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 0px;
+    max-width: 1200px;
+    margin: auto;
+}
+
 .film-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
-    padding: 20px;
+    padding: 0px;
     max-width: 1200px;
     margin: auto;
 }
@@ -291,7 +301,7 @@ menu {
     flex-direction: column;
     align-items: center ;
     gap: 20px;
-    margin-left: auto;
+    margin-top : 1%;
     /* Aligner à droite  */
     /* position: absolute;
     right: 0px; */
@@ -351,12 +361,13 @@ button:hover {
     align-items: center;
     width: 100%;
     max-width: 300px; /* Largeur réduite */
+    margin: 1%;
 }
 
 .form-recherche input[type="text"] {
     padding: 8px 12px;
     border: 1px solid #ddd;
-    border-radius: 20px 0 0 20px; /* Arrondi à gauche */
+    border-radius: 20px 0 0 20px;
     width: 100%;
     outline: none;
 }
@@ -366,7 +377,7 @@ button:hover {
     background-color: #f0f0f0;
     color: #333;
     border: 1px solid #ddd;
-    border-radius: 0 20px 20px 0; /* Arrondi à droite */
+    border-radius: 0 20px 20px 0;
     border-left: none;
     cursor: pointer;
 }
@@ -387,4 +398,76 @@ button:hover {
     color: #666;
     font-style: italic;
     margin: 40px 0;
+}
+
+/* Style pour le formulaire de validation de code */
+
+body.formValidation {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.formValidationCode {
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.formValidationCode h2 {
+    color: green;
+}
+
+.formValidationCode .insertion {
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+}
+
+.formValidationCode label {
+    margin: 5px;
+    padding-top: 2%;
+    width: 70%;
+    
+}
+
+.formValidationCode input[type="text"] {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+    width: 25%;
+}
+
+.formValidationCode button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.formValidationCode button:hover {
+    background-color: darkgreen;
+}
+
+.formValidationCode a.link {
+    margin-top: 10px;
+    display: inline-block;
+    color: green;
+    text-decoration: none;
+}
+
+.formValidationCode a.link:hover {
+    text-decoration: underline;
 }

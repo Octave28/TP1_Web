@@ -14,15 +14,15 @@
 <head>
     <link rel="stylesheet" href="css/style.css">
     <meta charset="UTF-8">
+    <script src="./dom.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A la une</title>
 </head>
 <body>
-    <header>
-        <h1>Notre Catalogue</h1>
-    </header>
+  
 
     <nav>
+        <img class = "ImageLogo" src="./Images/cinepass.jpeg" alt="Erreur">
         <a href="index.php">Accueil</a>
         <a href="catalogue.html">Catalogue</a>
         <a href="reservation.html">Faire une réservation</a>
@@ -31,25 +31,29 @@
         <a href="infos.html">Nous joindre</a>
     </nav>
 
-    <main>
-
+    <header>
+        <h1>Notre Catalogue</h1>
+    </header>
+    
     <main>
 
         <!-- Formulaire de recherche -->
+         
         <div class="form-container2">
             <div class="form-box" id="register-form">
-            <form method="GET" action="index.php">
-                <input type="text" name="recherche" placeholder="Rechercher un film..." 
-                    value="<?= isset($_GET['recherche']) ? htmlspecialchars($_GET['recherche']) : '' ?>">
-                <button type="submit">Rechercher</button>
-                <?php if (isset($_GET['recherche']) && !empty($_GET['recherche'])): ?>
-                    <a href="catalogue.php" class="btn-annuler">Annuler la recherche</a>
-                <?php endif; ?>
+                 <form method="GET" action="">
+                    <input type="text" name="recherche" placeholder="Rechercher un film..." 
+                        value="<?= isset($_GET['recherche']) ? htmlspecialchars($_GET['recherche']) : '' ?>">
+                    <button type="submit">Rechercher</button>
+                    <?php if (isset($_GET['recherche']) && !empty($_GET['recherche'])): ?>
+                        <a href="catalogue.php" class="btn-annuler">Annuler la recherche</a>
+                    <?php endif; ?>
                 </form>
             </div>
         </div>
-        
+         
         <div class = catalogue>
+            
             <!-- Affichage des films -->
             
             <div class = films-container>
@@ -61,7 +65,8 @@
             <div class = text-Publicite>
                 <h2> Ne restez pas en retrait !!!!!</h2>
 
-                <p> Connectez vous pour voir une liste de films spécialement réservés pour vous ! Nous avons une super élection qui devrait vous plaire. </p>
+                <p> Connectez vous pour voir une liste de films spécialement réservés pour vous ! 
+                    Nous avons une super élection qui devrait vous plaire. </p>
             </div>
         
 

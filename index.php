@@ -1,78 +1,78 @@
 <?php
-     require_once 'films.php';
+    require_once 'films.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/changementImages.js"></script>
     <script src="js/dom.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CinePass</title>
 </head>
 <body>
-    <header>
-        <h1>CinePass</h1>
-        <!-- <img class = "ImageLogo" src="./Images/cinepass.jpeg" alt="Erreur"> -->
-    </header>
 
     <nav>
+        <img class = "ImageLogo" src="./Images/cinepass.jpeg" alt="Erreur">
         <a href="index.php">Accueil</a>
         <a href="catalogue.php">Catalogue</a>
         <a href="reservation.html">Faire une réservation</a>
         <a href="creation.html">Créer un compte</a>
         <a href="connexion.html">Se connecter</a>
-        <a href="infos.html">Nous joindre</a>
+        <a href="infos.php">Nous joindre</a>
     </nav>
 
     <main>
-            <div class="resume-forward" >  
 
-                <div class="background-slider">
+        <div class="resume-forward">  
 
-                    <div class="texte-resume" >  
+            <div class="background-slider">
 
-                    <h1> Présentement à l'affiche </h1>
+                <div class="texte-resume">  
 
-                        <p class="texte-long">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    <h1>Présentement à l'affiche</h1>
+
+                    <p class="texte-long">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                         Vivamus convallis id turpis ac vulputate. Cras viverra ultricies ornare. 
                         Phasellus dictum nisi vel ligula Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                         Vivamus convallis id turpis ac vulputate. Cras viverra ultricies ornare.
                         Phasellus dictum nisi vel ligula venenatis viverra ut et leo. 
                         Donec egestas ex eu euismod tempor. Donec tempus et elit eget posuere. 
                         Cras sit amet purus vitae enim pellentesque vulputate. 
-                        Pellentesque vel posuere sem, sit amet bibendum nisl. Etiam quis sagittis libero. </p>
-
-                        <div class="film-grid">
-                            <?php afficherFilmsAleatoires($films, 4); ?>
-                        </div>
-                    </div>
-                </div>
-            
-
-        
-                <h1> Ne manquez pas nos tous derniers bangers </h1>
-                <p class="texte-long">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                    Vivamus convallis id turpis ac vulputate. Cras viverra ultricies ornare. 
-                    Phasellus dictum nisi vel ligula Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Vivamus convallis id turpis ac vulputate. Cras viverra ultricies ornare.
-                    Phasellus dictum nisi vel ligula venenatis viverra ut et leo. 
-                    Donec egestas ex eu euismod tempor. Donec tempus et elit eget posuere. 
-                    Cras sit amet purus vitae enim pellentesque vulputate. 
-                    Pellentesque vel posuere sem, sit amet bibendum nisl. Etiam quis sagittis libero. </p>
-
+                        Pellentesque vel posuere sem, sit amet bibendum nisl. Etiam quis sagittis libero.
+                    </p>
 
                     <div class="film-grid">
-                            <?php afficherFilmsAleatoires($films, 10); ?>
+                        <?php afficherFilmsAleatoires($films, 4); ?>
                     </div>
-            
+
+                </div> 
+
             </div>
 
-       
-        
+            <h1>Ne manquez pas nos tous derniers bangers</h1>
+
+            <p class="texte-long">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Vivamus convallis id turpis ac vulputate. Cras viverra ultricies ornare. 
+                Phasellus dictum nisi vel ligula Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Vivamus convallis id turpis ac vulputate. Cras viverra ultricies ornare.
+                Phasellus dictum nisi vel ligula venenatis viverra ut et leo. 
+                Donec egestas ex eu euismod tempor. Donec tempus et elit eget posuere. 
+                Cras sit amet purus vitae enim pellentesque vulputate. 
+                Pellentesque vel posuere sem, sit amet bibendum nisl. Etiam quis sagittis libero.
+            </p>
+
+            <div class="film-grid">
+                <?php afficherFilmsAleatoires($films, 10); ?>
+            </div>
+
+        </div>
+
     </main>
+
     <footer>
         <div>
             <ul>

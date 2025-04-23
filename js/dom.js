@@ -16,9 +16,9 @@ changeBackground(); // Appel initial pour éviter l'attente
 
 
 
-// // Gestion de l'affichage des films // 
+// Gestion de l'affichage des films // 
 
-
+ 
 // Tableau des films
 let films = [
     {
