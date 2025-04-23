@@ -8,10 +8,12 @@ if (!isset($_POST['code'])) {
 
 $codeUtilisateur = $_POST['code'];
 $codeSession = $_SESSION['code'];
+$mail = $_SESSION['email'];
 
 if ($codeUtilisateur == $codeSession) {
+
     // Code correct
-    //session_unset();          // Nettoie les variables
+   
     if (session_status() == PHP_SESSION_ACTIVE){
         $parametresSession = session_get_cookie_params(); //Pour antidater (détruire) le cookie
 
@@ -26,13 +28,14 @@ if ($codeUtilisateur == $codeSession) {
          
     session_start(); // Nouvelle session
 
-    $_SESSION['authentifié'] = true;
+    $_SESSION['email'] = $mail;
 
-    $_SESSION['email'] = $_SESSION['email']; 
-
-    header("Location: accueil.php");
+    header("Location: ../pagePrecieuse.php");
 
     exit();
+
 } else {
+
     echo "Code incorrect. <a href='formAuthentication.php'>Réessayer</a>";
+
 }

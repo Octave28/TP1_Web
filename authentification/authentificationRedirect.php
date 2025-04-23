@@ -1,5 +1,6 @@
 <?php
-require_once __DIR__ . "sessionSet.include.php";
+require_once __DIR__ . "/sessionSet.include.php";
+
 session_start();
 
 if (session_status() == PHP_SESSION_ACTIVE) {
@@ -11,14 +12,15 @@ if (session_status() == PHP_SESSION_ACTIVE) {
         $code = rand(100000, 999999);
         $_SESSION['code'] = $code;
 
+
         if (envoyerMail($destinataire, "Votre code est : " . $code)) {
-            header("Location:formAuthentication.php");
+            header("Location:formAuthentification.php");
             exit();
         } else {
             echo "<p>Message non envoyé à " . htmlspecialchars($destinataire) . "</p>";
         }
     } else {
-        echo "<p>Veuillez vous recoennecter.</p>";
+        echo "<p>Veuillez vous reconnecter.</p>";
     }
 }
 

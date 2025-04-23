@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php session_start(); 
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,10 +9,11 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="formValidation">
+
     <div class="formValidationCode">
 
         <h2>Validation d'identité</h2>
-        <p>Un code de sécurité à 6 chiffres a été envoyé à l'adresse courriel <strong><?= htmlspecialchars($_SESSION['email'] ?? 'adresse inconnue') ?></strong>.</p>
+        <p>Un code de sécurité à 6 chiffres a été envoyé à l'adresse courriel <strong><?= htmlspecialchars($_SESSION['email']) ?></strong>.</p>
         <p>Veuillez saisir le code de sécurité reçu et appuyer sur 'Valider'.</p>
 
         <form action="verifierCode.php" method="POST">
@@ -23,7 +26,8 @@
             <button type="submit">Valider</button>
         </form>
 
-        <a href="renvoyerCode.php" class="link">Demander un nouveau code</a>
+        <a href="authentificationRedirect.php" class="link">Demander un nouveau code</a>
     </div>
+    
 </body>
 </html>

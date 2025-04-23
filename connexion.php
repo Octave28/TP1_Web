@@ -32,10 +32,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $prenom = htmlspecialchars($user['prenom']);
 
                 require_once __DIR__."/authentification/sessionSet.include.php";
+                
                 session_start();
-                $_SESSION['email'] = $email;
+                $_SESSION['email'] = "2309595@cegepat.qc.ca";
                 $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
-                header("Location: authentificationRedirect.php");
+                header("Location: authentification/authentificationRedirect.php");
 
             } else {
                 //Mauvais mot de passe, rediriger

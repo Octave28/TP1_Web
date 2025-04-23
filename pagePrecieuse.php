@@ -1,12 +1,23 @@
 <?php
+    
+    require_once __DIR__ . "/sessionSet.include.php";
     require_once 'films.php';
     $meilleursFilms = array_filter($films, function($film) {
         return isset($film['labels']['oscars']);
     });
 
-    $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];
-    $mail = $_POST['email'];
+    session_start();
+    
+    if (session_status() == PHP_SESSION_ACTIVE) {
+
+        // Vérifie si l'utilisateur est bien connecté (ex. par l'email stocké)
+        if (isset($_SESSION['email']) && isset($_SESSION['ip']) && $_SESSION['ip'] == $_SERVER['REMOTE_ADDR']) 
+        {
+            $prenom = $_SESSION['prenom'];
+            $mail = $_SESSION['email'];
+        }
+    
+    }
 ?>
 
 <!DOCTYPE html>
