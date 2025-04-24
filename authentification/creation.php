@@ -28,9 +28,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $connexion = new PDO($dsn, $usager, $mdp);
             $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+            // Requete pour vérification si le compte existe déjà 
+            $nbIdentifiant = $connexion->query("SELECT COUNT(email) from users where email like ':email'");
+            $nbIdentifiant ->bindParam(':email', $email);
+
+            if ($nbIdentifiant->rowCount() > 0) {
+                echo "<h3><a href='../formCreation.html'> Cette adresse email existe déjà. Veuillez réessayer.</a></h3>";
+            }
+
+            else{
+
             // Requête d'insertion
 
-            $stmt = $connexion->prepare("INSERT INTO user (nom, prenom, email, mdp) VALUES (:nom, :prenom, :email, :password)");
+            $stmt = $connexion->prepare("INSERT INTO users (nom, prenom, email, mdp) VALUES (:nom, :prenom, :email, :password)");
             $stmt->bindParam(':nom', $nom);
             $stmt->bindParam(':prenom', $prenom);
             $stmt->bindParam(':email', $email);
@@ -40,13 +50,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             
             if ($stmt->execute()) {
                 echo "<h2>Compte créé avec succès !</h2>";
-                echo "<h3><a href='connexion.html'> Se connecter </a></h3>";
+                echo "<h3><a href='../formConnexion.html'> Se connecter </a></h3>";
             } else {
                 echo "<p>Erreur lors de la création du compte.</p>";
             }
-
+            }
         } catch (PDOException $e) {
-            echo "Erreur de connexion à la base de données : " . $e->getMessage();
+
+            echo "<h3><a href='../formCreation.html'> Une erreur inconnue est survenue. Veuillez réessayer.</a></h3>";
+            #echo "Erreur de connexion à la base de données : " . $e->getMessage();
         }
     } else {
         echo "<p>Veuillez remplir tous les champs correctement.</p>";

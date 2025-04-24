@@ -1,27 +1,42 @@
 <?php
+
+# session intermédiaire pour envoi du code pour la 2FA
+
 require_once __DIR__ . "/sessionSet.include.php";
 
-session_start();
+session_start(); # Je reprends la session
 
 if (session_status() == PHP_SESSION_ACTIVE) {
 
-    // Vérifie si l'utilisateur est bien connecté (ex. par l'email stocké)
-    if (isset($_SESSION['email']) && isset($_SESSION['ip']) && $_SESSION['ip'] == $_SERVER['REMOTE_ADDR']) {
+    // Si la session est toujours active :
+
+    if (isset($_SESSION['email']) && isset($_SESSION['prenom']) && isset($_SESSION['ip']) && $_SESSION['ip'] == $_SERVER['REMOTE_ADDR']) {
 
         $destinataire = $_SESSION['email']; // Utilisation de l'email en session
         $code = rand(100000, 999999);
         $_SESSION['code'] = $code;
+        $prenom = $_SESSION['prenom'];
 
+        # J'envoie le code
 
         if (envoyerMail($destinataire, "Votre code est : " . $code)) {
-            header("Location:formAuthentification.php");
+            # Si le code est bien envoyé, 
+            
+            header("Location:formAuthentificationCode.php"); # Redirection de l'utilisateur vers le formulaire pour qu'il entre le code recu 
+
             exit();
+
         } else {
             echo "<p>Message non envoyé à " . htmlspecialchars($destinataire) . "</p>";
         }
-    } else {
-        echo "<p>Veuillez vous reconnecter.</p>";
+    } else {   
+        
+        echo"<h3><a href='authentificationRedirect.php'>Une erreur est servenue. Veuillez réessayer.</a></h3>";
+       
     }
+}
+ else {
+    echo"<h3><a href='formConnexion.html'> La session n'est plus active. Veuillez vous reconnecter.</a></h3>";
 }
 
 // Fonction d'envoi de mail

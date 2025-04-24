@@ -1,5 +1,7 @@
 <?php
 
+# Code pour vériification du mot de passe entré par l'utilisateur pour se connecter et celui enrégistré dans la base de données à son inscription
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (!empty($_POST['email']) && !empty($_POST['password']))  {
@@ -19,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             // Récupération du nom et du mot de passe hashé à partir du courriel
 
-            $stmt = $connexion->prepare("SELECT * FROM user WHERE email = :email");
+            $stmt = $connexion->prepare("SELECT * FROM users WHERE email = :email");
             $stmt->bindParam(':email', $email, PDO::PARAM_STR);
 
             $stmt->execute();
@@ -29,22 +31,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             
             if (password_verify($password, $user['mdp'])) {
 
+
+            // Si correct, j'enregistre le prénom et je crée une nouvelle session
+
                 $prenom = htmlspecialchars($user['prenom']);
 
-                require_once __DIR__."/authentification/sessionSet.include.php";
-                
+                require_once __DIR__."/sessionSet.include.php";
+            
                 session_start();
-                $_SESSION['email'] = "2309595@cegepat.qc.ca";
+                $_SESSION['email'] = $email;
                 $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
-                header("Location: authentification/authentificationRedirect.php");
+                $_SESSION['prenom'] = $prenom;
+                header("Location: authentificationRedirect.php");
 
             } else {
                 //Mauvais mot de passe, rediriger
-                 header("Location: ../index.php?session=erreurInfo");
+                echo"<h3><a href='../formConnexion.html'> Adresse email ou mot de passe incorrect. Veuillez réessayer.</a></h3>";
             }
 
         } catch (PDOException $e) {
-            echo "<p>Erreur de connexion à la base de données : " . $e->getMessage() . "</p>";
+            #echo "<p>Erreur de connexion à la base de données : " . $e->getMessage() . "</p>";
+            "<h3><a href='../formConnexion.html'> Une erreur est survenue. Veuillez réessayer.</a></h3>";
         }
     } else {
         echo "<p>Veuillez remplir tous les champs.</p>";

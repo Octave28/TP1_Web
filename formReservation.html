@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A la une</title>
+</head>
+<body>
+    
+    <main> 
+        <div class="form-container">
+            <div class="form-box" id="reservation-form">
+                <h2>Réserver une place</h2>
+                <form action="reservation.php" method="POST">
+                    <label for="name">Nom :</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="name">Prenom :</label>
+                    <input type="text" id="prenom" name="prenom" required>
+                    
+                    <label for="movie">Film :</label>
+                    <select id="movie" name="movie" required>
+                        <option value="film1">Film 1</option>
+                        <option value="film2">Film 2</option>
+                        <option value="film3">Film 3</option>
+                    </select>
+                    
+                    <label for="date">Date :</label>
+                    <input type="date" id="date" name="date" required>
+                    
+                    <label for="time">Horaire :</label>
+                    <input type="time" id="time" name="time" required>
+                    
+                    <label for="seats">Nombre de places :</label>
+                    <input type="number" id="seats" name="seats" min="1" required>
+                    
+                    <button type="submit">Réserver</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </main>
+</body>
+</html>

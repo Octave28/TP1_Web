@@ -2,13 +2,16 @@
 require_once __DIR__ . "/sessionSet.include.php";
 session_start();
 
-if (!isset($_POST['code'])) {
-    echo "Pas de code. <a href='formAuthentication.php'>Réessayer</a>";;
+if (!isset($_POST['code']) || !isset($_SESSION['prenom']) ) {
+    echo "Pas de code. <a href='formAuthentication.php'>Réessayer</a>";
+    header("Location:authentificationRedirect.php");
 }
 
 $codeUtilisateur = $_POST['code'];
 $codeSession = $_SESSION['code'];
 $mail = $_SESSION['email'];
+$prenom = $_SESSION['prenom'];
+$ip = $_SESSION['ip'];
 
 if ($codeUtilisateur == $codeSession) {
 
@@ -29,6 +32,9 @@ if ($codeUtilisateur == $codeSession) {
     session_start(); // Nouvelle session
 
     $_SESSION['email'] = $mail;
+    $_SESSION['prenom'] = $prenom;
+    $_SESSION['ip'] = $ip;
+    
 
     header("Location: ../pagePrecieuse.php");
 
@@ -36,6 +42,6 @@ if ($codeUtilisateur == $codeSession) {
 
 } else {
 
-    echo "Code incorrect. <a href='formAuthentication.php'>Réessayer</a>";
+    echo "Code incorrect. <a href='formAuthentificationCode.php'>Réessayer</a>";
 
 }

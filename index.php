@@ -18,8 +18,8 @@
         <a href="index.php">Accueil</a>
         <a href="catalogue.php">Catalogue</a>
         <a href="reservation.html">Faire une réservation</a>
-        <a href="creation.html">Créer un compte</a>
-        <a href="connexion.html">Se connecter</a>
+        <a href="formCreation.html">Créer un compte</a>
+        <a href="formConnexion.html">Se connecter</a>
         <a href="infos.php">Nous joindre</a>
     </nav>
 

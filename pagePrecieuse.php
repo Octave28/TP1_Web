@@ -1,20 +1,31 @@
 <?php
     
-    require_once __DIR__ . "/sessionSet.include.php";
     require_once 'films.php';
     $meilleursFilms = array_filter($films, function($film) {
         return isset($film['labels']['oscars']);
     });
 
+    require_once __DIR__ . "/authentification/sessionSet.include.php";
     session_start();
     
     if (session_status() == PHP_SESSION_ACTIVE) {
+
+        #var_dump($_SESSION['email']);
+        #var_dump($_SESSION['prenom']);
+        #var_dump($_SESSION['ip']);
+        #var_dump($_SERVER['REMOTE_ADDR']);
 
         // Vérifie si l'utilisateur est bien connecté (ex. par l'email stocké)
         if (isset($_SESSION['email']) && isset($_SESSION['ip']) && $_SESSION['ip'] == $_SERVER['REMOTE_ADDR']) 
         {
             $prenom = $_SESSION['prenom'];
             $mail = $_SESSION['email'];
+            #var_dump($prenom);
+        }
+        else{
+            error_log("[".date("d/m/o H:i:s e",time())."]  Client ".$_SERVER['REMOTE_ADDR']."\n\r",3, __DIR__."/../../../logs");
+            header("Location: erreur.php");
+            exit();
         }
     
     }
@@ -45,21 +56,23 @@
 
     <main>
        
-        <div class="resume-forward" >  
 
-            <div class="texte-resume" >  
+        <div class="texte-resume" >  
 
-                <h1> Bienvenue, <?php echo $prenom; ?> </h1>
+            <h1> Bienvenue, <?php echo $prenom; ?> </h1>
 
-                <h2> Voici une liste de films recommandés pour vous !</h2>
+            <h2> Voici une liste de films recommandés pour vous !</h2>
 
-                <div class="film-grid">
-                    <?php afficherFilms($meilleursFilms) ?>
-                </div>
-            
+            <div class="film-grid">
+                <?php afficherFilms($meilleursFilms) ?>
             </div>
 
+            <div class="">
+                <a href="reservation.php">Cliquez ici pour accéder à vos réservations</a>
+            </div>
+        
         </div>
+
 
     </main>
     
