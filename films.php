@@ -1,53 +1,82 @@
 <?php
-// Tableau des films
-$films = [
-    [
-        'titre' => 'Deadpool 2',
-        'image' => 'Images/deadpool 2.jpg',
-        'labels' => ['new' => 'NOUVEAU']
-    ],
-    [
-        'titre' => 'Dune !',
-        'image' => 'Images/Dune-2-Poster-4x5-BW.jpg',
-        'labels' => []
-    ],
-    [
-        'titre' => 'Mission Impossible 2',
-        'image' => 'Images/mission-impossible-dex-reckoning-part-2-poster-by-rahalarts.jpg',
-        'labels' => ['oscars' => '8 OSCARS']
-    ],
-    [
-        'titre' => 'Godzilla',
-        'image' => 'Images/Godzilla.jpg',
-        'labels' => ['new' => 'NOUVEAU']
-    ],
-    [
-        'titre' => 'Joker',
-        'image' => 'Images/joker.webp',
-        'labels' => ['oscars' => '10 NOMINATIONS AUX OSCARS']
-    ],
+// // Tableau des films
+// $films = [
+//     [
+//         'titre' => 'Deadpool 2',
+//         'image' => 'Images/deadpool 2.jpg',
+//         'labels' => ['new' => 'NOUVEAU']
+//     ],
+//     [
+//         'titre' => 'Dune !',
+//         'image' => 'Images/Dune-2-Poster-4x5-BW.jpg',
+//         'labels' => []
+//     ],
+//     [
+//         'titre' => 'Mission Impossible 2',
+//         'image' => 'Images/mission-impossible-dex-reckoning-part-2-poster-by-rahalarts.jpg',
+//         'labels' => ['oscars' => '8 OSCARS']
+//     ],
+//     [
+//         'titre' => 'Godzilla',
+//         'image' => 'Images/Godzilla.jpg',
+//         'labels' => ['new' => 'NOUVEAU']
+//     ],
+//     [
+//         'titre' => 'Joker',
+//         'image' => 'Images/joker.webp',
+//         'labels' => ['oscars' => '10 NOMINATIONS AUX OSCARS']
+//     ],
 
-    [
-        'titre' => 'Avatar',
-        'image' => 'Images/avatar.jpg',
-        'labels' => ['new' => 'NOUVEAU']
-    ],
+//     [
+//         'titre' => 'Avatar',
+//         'image' => 'Images/avatar.jpg',
+//         'labels' => ['new' => 'NOUVEAU']
+//     ],
 
-    [
-        'titre' => 'Ghostbusters',
-        'image' => 'Images/Ghostbusters.jpg',
-        'labels' => []
-    ],
+//     [
+//         'titre' => 'Ghostbusters',
+//         'image' => 'Images/Ghostbusters.jpg',
+//         'labels' => []
+//     ],
 
-    [
-        'titre' => 'Kung-Fu Panda 4',
-        'image' => 'Images/kung-fu-panda-4.jpg',
-        'labels' => ['oscars' => '6 NOMINATIONS AUX OSCARS']
-    ]
-];
+//     [
+//         'titre' => 'Kung-Fu Panda 4',
+//         'image' => 'Images/kung-fu-panda-4.jpg',
+//         'labels' => ['oscars' => '6 NOMINATIONS AUX OSCARS']
+//     ]
+// ];
+
+// Array des films
+define("BDSCHEMA", "akpachoh25techin_BD-Octave");
+define("BDSERVEUR", "127.0.0.1");
+$dsn = "mysql:dbname=" . BDSCHEMA . ";host=" . BDSERVEUR;
+$usager = "akpachoh25techin_UserLecture";
+$mdp = "b+zIQTikY5RX";
+
+    // Connexion à la base de données
+    try {
+        $connexion = new PDO($dsn, $usager, $mdp);
+        $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Preparation de la requete pour obtenir les films
+
+        $stmt = $connexion->prepare(
+            "SELECT f.* FROM films f"
+        );
+
+        $stmt->execute();
+
+        $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        var_dump($films);
+
+    } 
+    catch (PDOException $e) {
+        echo "Erreur de connexion : " . $e->getMessage();
+    }
 
 
-// Fonctionner pour rechercher des films
+// Fonction pour rechercher des films
 function rechercherFilms($terme) {
     global $films;
     $results = [];

@@ -2,18 +2,13 @@
     
     require_once 'films.php';
     $meilleursFilms = array_filter($films, function($film) {
-        return isset($film['labels']['oscars']);
+        return isset($film['label']['oscars']);
     });
 
     require_once __DIR__ . "/authentification/sessionSet.include.php";
     session_start();
     
     if (session_status() == PHP_SESSION_ACTIVE) {
-
-        #var_dump($_SESSION['email']);
-        #var_dump($_SESSION['prenom']);
-        #var_dump($_SESSION['ip']);
-        #var_dump($_SERVER['REMOTE_ADDR']);
 
         // Vérifie si l'utilisateur est bien connecté (ex. par l'email stocké)
         if (isset($_SESSION['email']) && isset($_SESSION['ip']) && $_SESSION['ip'] == $_SERVER['REMOTE_ADDR']) 
@@ -47,14 +42,14 @@
         <img class = "ImageLogo" src="./Images/cinepass.jpeg" alt="Erreur">
         <a href="index.php">Accueil</a>
         <a href="catalogue.php">Catalogue</a>
-        <a href="reservation.html">Faire une réservation</a>
-        <a href="reservation.html">Vos réservations</a>
-        <a href="infos.html">Nous joindre</a>
+        <a href="formReservation.html">Faire une réservation</a>
+        <a href="reservations.php">Vos réservations</a>
+        <a href="infosProtegee.php">Nous joindre</a>
         <a href="deconnexion.php">Déconnexion</a>
        
     </nav>
 
-    <main>
+    <div class = reservations>
        
 
         <div class="texte-resume" >  
@@ -68,13 +63,13 @@
             </div>
 
             <div class="">
-                <a href="reservation.php">Cliquez ici pour accéder à vos réservations</a>
+                <a href="reservations.php">Cliquez ici pour accéder à vos réservations</a>
             </div>
         
         </div>
 
 
-    </main>
+    </di>
     
     <footer>
         <div>
@@ -88,7 +83,7 @@
         <div>
             <ul>
                 <li>1XX, rue du Cine Est (Movie), J1X XYZ</li>
-                <li>info@cinemapass.com</li>
+                <li>info@cinepass.com</li>
                 <li>123-4566-7890</li>
             </ul>
         </div>

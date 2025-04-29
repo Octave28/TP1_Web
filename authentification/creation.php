@@ -1,4 +1,5 @@
 <?php
+
 // Vérifie que le formulaire a bien été soumis en POST
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -29,10 +30,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             // Requete pour vérification si le compte existe déjà 
-            $nbIdentifiant = $connexion->query("SELECT COUNT(email) from users where email like ':email'");
+            $nbIdentifiant = $connexion->query("SELECT COUNT(email) from users where email = ':email'");
             $nbIdentifiant ->bindParam(':email', $email);
 
-            if ($nbIdentifiant->rowCount() > 0) {
+            //var_dump($nbIdentifiant);
+
+            if ($nbIdentifiant->rowCount() > 1) {
                 echo "<h3><a href='../formCreation.html'> Cette adresse email existe déjà. Veuillez réessayer.</a></h3>";
             }
 

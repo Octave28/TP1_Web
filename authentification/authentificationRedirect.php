@@ -43,7 +43,7 @@ if (session_status() == PHP_SESSION_ACTIVE) {
 function envoyerMail($to, $message) {
     $subject = 'Code de vérification';
     $headers = 
-        'From: cinepass@noreply' . "\r\n" .
+        'From: info@cinepass.com' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
 
     return mail($to, $subject, $message, $headers);    

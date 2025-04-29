@@ -1,12 +1,30 @@
 <?php
 
+    require_once __DIR__ . "/authentification/sessionSet.include.php";
+
+    session_start();
+
+    if (session_status() == PHP_SESSION_ACTIVE) {
+
+        // Vérifie si l'utilisateur est bien connecté (ex. par l'email stocké)
+
+        if (isset($_SESSION['email']) && isset($_SESSION['ip']) && $_SESSION['ip'] == $_SERVER['REMOTE_ADDR']) 
+        {
+            $mail = $_SESSION['email'];
+        }
+        else{
+            error_log("[".date("d/m/o H:i:s e",time())."]  Client ".$_SERVER['REMOTE_ADDR']."\n\r",3, __DIR__."/../../../logs");
+            header("Location: erreur.php");
+            exit();
+        }
+    }
+
     require_once 'films.php';
 
     $filmsAffiches = $films; // Par défaut, afficher tous les films
     if (isset($_GET['recherche']) && !empty($_GET['recherche'])) {
         $filmsAffiches = rechercherFilms($films, $_GET['recherche']);
     }
-
 ?>
 
 <!DOCTYPE html>
@@ -24,10 +42,10 @@
     <nav>
         <img class = "ImageLogo" src="./Images/cinepass.jpeg" alt="Erreur">
         <a href="index.php">Accueil</a>
-        <a href="catalogue.html">Catalogue</a>
+        <a href="catalogue.php">Catalogue</a>
         <a href="reservation.html">Faire une réservation</a>
-        <a href="creation.html">Créer un compte</a>
-        <a href="connexion.html">Se connecter</a>
+        <a href="formCreation.html">Créer un compte</a>
+        <a href="formConnexion.html">Se connecter</a>
         <a href="infos.html">Nous joindre</a>
     </nav>
 
@@ -85,7 +103,7 @@
         <div>
             <ul>
                 <li>1XX, rue du Cine Est (Movie), J1X XYZ</li>
-                <li>info@cinemapass.com</li>
+                <li>info@cinepass.com</li>
                 <li>123-4566-7890</li>
             </ul>
         </div>

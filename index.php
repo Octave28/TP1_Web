@@ -16,7 +16,6 @@
     <nav>
         <img class = "ImageLogo" src="./Images/cinepass.jpeg" alt="Erreur">
         <a href="index.php">Accueil</a>
-        <a href="catalogue.php">Catalogue</a>
         <a href="reservation.html">Faire une réservation</a>
         <a href="formCreation.html">Créer un compte</a>
         <a href="formConnexion.html">Se connecter</a>
