@@ -68,8 +68,6 @@ $mdp = "b+zIQTikY5RX";
 
         $films = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        var_dump($films);
-
     } 
     catch (PDOException $e) {
         echo "Erreur de connexion : " . $e->getMessage();
@@ -98,10 +96,24 @@ function afficherFilms(array $films) {
         echo '<div class="film">';
         echo '<img src="' . htmlspecialchars($film['image']) . '" alt="' . htmlspecialchars($film['titre']) . '">';
         
-        if (!empty($film['labels'])) {
-            foreach ($film['labels'] as $class => $label) {
-                echo '<span class="label ' . htmlspecialchars($class) . '">' . htmlspecialchars($label) . '</span>';
-            }
+        // if (!empty($film['labels'])) {
+        //     // foreach ($film['labels'] as $class => $label) {
+        //     //     echo '<span class="label ' . htmlspecialchars($class) . '">' . htmlspecialchars($label) . '</span>';
+        //     // }
+        //     foreach ($film['labels'] as $label) {
+        //         echo '<span class="label ' . htmlspecialchars($label) . '">' . htmlspecialchars($label) . '</span>';
+        //         }
+        // }
+
+        if (!empty($films['labels'])) {
+            // foreach ($film['labels'] as $class => $label) {
+            //     echo '<span class="label ' . htmlspecialchars($class) . '">' . htmlspecialchars($label) . '</span>';
+            // }
+            foreach ($films['labels'] as $label) {
+                echo '<span class="label ' . htmlspecialchars($label) . '">' . htmlspecialchars($label) . '</span>';
+                }
+            
+            var_dump($films);
         }
         
         echo '<h2>' . htmlspecialchars($film['titre']) . '</h2>';
@@ -130,11 +142,24 @@ function afficherFilmsAleatoires($films, $nombre = 5) {
         echo '<div class="film">';
         echo '<img src="'.$film['image'].'" alt="'.htmlspecialchars($film['titre']).'">';
         
-        if (!empty($film['labels'])) {
-            foreach ($film['labels'] as $class => $label) {
-                echo '<span class="label '.$class.'">'.$label.'</span>';
-            }
-        }     
+        // if (!empty($film['labels'])) {
+        //     // foreach ($film['labels'] as $class => $label) {
+        //     //     echo '<span class="label '.$class.'">'.$label.'</span>';
+        //     // }
+        //     foreach ($film['labels'] as $label) {
+        //         echo '<span class="label ' . htmlspecialchars($label) . '">' . htmlspecialchars($label) . '</span>';
+        //     }
+        // } 
+        
+        
+        if (!empty($films['labels'])) {
+            // foreach ($film['labels'] as $class => $label) {
+            //     echo '<span class="label ' . htmlspecialchars($class) . '">' . htmlspecialchars($label) . '</span>';
+            // }
+            foreach ($films['labels'] as $label) {
+                echo '<span class="label ' . htmlspecialchars($label) . '">' . htmlspecialchars($label) . '</span>';
+                }
+        }
         echo '<h2>'.htmlspecialchars($film['titre']).'</h2>';
         echo '</div>';
     }

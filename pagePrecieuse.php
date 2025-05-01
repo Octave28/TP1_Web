@@ -1,9 +1,9 @@
 <?php
     
     require_once 'films.php';
-    $meilleursFilms = array_filter($films, function($film) {
-        return isset($film['label']['oscars']);
-    });
+    // $meilleursFilms = array_filter($films, function($film) {
+    //     return isset($film['labels']['oscars']);
+    // });
 
     require_once __DIR__ . "/authentification/sessionSet.include.php";
     session_start();
@@ -59,7 +59,7 @@
             <h2> Voici une liste de films recommandés pour vous !</h2>
 
             <div class="film-grid">
-                <?php afficherFilms($meilleursFilms) ?>
+                <?php afficherFilmsAleatoires($films, 7) ?>
             </div>
 
             <div class="">
@@ -68,8 +68,7 @@
         
         </div>
 
-
-    </di>
+    </div>
     
     <footer>
         <div>
