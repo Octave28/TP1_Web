@@ -17,14 +17,16 @@
         <img class = "ImageLogo" src="./Images/cinepass.jpeg" alt="Erreur">
         <a href="index.php">Accueil</a>
         <a href="reservation.html">Faire une réservation</a>
-        <a href="formCreation.html">Créer un compte</a>
-        <a href="formConnexion.html">Se connecter</a>
+        <a href="formCreation.php">Créer un compte</a>
+        <a href="formConnexion.php">Se connecter</a>
         <a href="infos.php">Nous joindre</a>
     </nav>
 
     <main>
 
         <div class="resume-forward">  
+
+            <h1>Bienvenue sur Cinepass !</h1>
 
             <div class="background-slider">
 

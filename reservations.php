@@ -4,10 +4,11 @@ session_start();
 
 if (session_status() == PHP_SESSION_ACTIVE) {
 // Vérifie si l'utilisateur est connecté
-    if (!isset($_SESSION['email']) || !isset($_SESSION['prenom'])) {
+    if (!isset($_SESSION['email']) || !isset($_SESSION['prenom']) || !isset($_SESSION['nom'])) {
         // Rediriger vers la page de connexion si non connecté
-        header('Location: formConnexion.html');
+        header('Location: formConnexion.php');
         exit();
+        
     }
 }
 
@@ -53,7 +54,7 @@ try {
         <img class = "ImageLogo" src="./Images/cinepass.jpeg" alt="Erreur">
         <a href="pagePrecieuse.php">Accueil</a>
         <a href="catalogue.php">Catalogue</a>
-        <a href="formReservation.html">Faire une réservation</a>
+        <a href="formReservation.php">Faire une réservation</a>
         <a href="reservations.php">Vos réservations</a>
         <a href="infosProtegee.php">Nous joindre</a>
         <a href="deconnexion.php">Déconnexion</a>
@@ -87,8 +88,8 @@ try {
                     <tbody>
                         <?php foreach ($reservations as $reservation): ?>
                             <tr>
-                                <td><?= htmlspecialchars($reservation['nom']) ?></td>
-                                <td><?= htmlspecialchars($reservation['prenom']) ?></td>
+                                <td><?= htmlspecialchars($_SESSION['nom']) ?></td>
+                                <td><?= htmlspecialchars($_SESSION['prenom']) ?></td>
                                 <td><?= htmlspecialchars($reservation['titre'])?></td>
                                 <td> <img class="imgReservation" src="<?= htmlspecialchars($reservation['image']) ?>" alt="Affiche du film">
                                 <td><?= htmlspecialchars($reservation['date']) ?></td>
@@ -101,9 +102,7 @@ try {
             <?php endif; ?>
             
            
-        </div>
-
-       
+        </div>  
 
     </main>
 

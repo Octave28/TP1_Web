@@ -29,7 +29,7 @@
                 <button type="submit">Créer un compte</button>
             </form>
         </div>
-        <p> Vous avez déjà un compte ? <a href="formConnexion.html">Connectez-vous </a> !</p>    
+        <p> Vous avez déjà un compte ? <a href="formConnexion.php">Connectez-vous </a> !</p>    
     </div>
 </body>
 </html>

@@ -13,9 +13,9 @@
         <img class = "ImageLogo" src="./Images/cinepass.jpeg" alt="Erreur">
         <a href="pagePrecieuse.php">Accueil</a>
         <a href="catalogue.php">Catalogue</a>
-        <a href="reservation.php">Faire une réservation</a>
+        <a href="formReservation.php">Faire une réservation</a>
         <a href="reservations.php">Vos réservations</a>
-        <a href="infos.html">Nous joindre</a>
+        <a href="infosProtegee.php">Nous joindre</a>
     </nav>
 
     <header>
@@ -24,7 +24,9 @@
 
     <main>
         <div class = catalogue>
+
             <div>
+
                 <p>
                     La billetterie physique ouvre tous les jours a compter de 18:00, a compter de 12:00 
                     le samedi et dimanche. Elle ferme 15 minutes après la dernière représentation du jour Vous pouvez vous procurer les billets pour n’importe quel soir de la semaine a compter du vendredi soir, jusqu’au jeudi suivant (7 jours). 
@@ -36,6 +38,7 @@
                         Phasellus dictum nisi vel ligula venenatis viverra ut et leo. 
                         Donec egestas ex eu euismod tempor. Donec tempus et elit eget posuere.
                 </p>
+
             </div>
 
             <script src="/js/dom.js">
@@ -43,8 +46,7 @@
                 afficherFilms(films) 
 
             </script>
-       
-        
+
             <div>
                 
                 <h1>Contacts :</h1>
@@ -56,7 +58,9 @@
                 </ul>
 
             </div>
+
         </div>
+
     </main>
 
     <footer>

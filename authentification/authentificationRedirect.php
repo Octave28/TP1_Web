@@ -10,12 +10,13 @@ if (session_status() == PHP_SESSION_ACTIVE) {
 
     // Si la session est toujours active :
 
-    if (isset($_SESSION['email']) && isset($_SESSION['prenom']) && isset($_SESSION['ip']) && $_SESSION['ip'] == $_SERVER['REMOTE_ADDR']) {
+    if (isset($_SESSION['email']) && $_SESSION['nom'] && isset($_SESSION['prenom']) && isset($_SESSION['ip']) && $_SESSION['ip'] == $_SERVER['REMOTE_ADDR']) {
 
         $destinataire = $_SESSION['email']; // Utilisation de l'email en session
         $code = rand(100000, 999999);
         $_SESSION['code'] = $code;
         $prenom = $_SESSION['prenom'];
+        $nom = $_SESSION['nom'];
 
         # J'envoie le code
 

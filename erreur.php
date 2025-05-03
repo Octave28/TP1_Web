@@ -7,6 +7,6 @@
 </head>
 <body>
     <h1>Une erreur ne vous permet pas d'accéder à cet application</h1>
-    <p>Authentification anormal - mail ou mdp absent ou origine différent:</p>
+    <p>Vous devez vous connnecter pour accéder à notre catalogue</p>
 </body>
 </html>

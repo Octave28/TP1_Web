@@ -18,14 +18,16 @@
 
                 <form action="reservation.php" method="POST">
 
-                    <label for="name">Nom :</label>
-                    <input type="text" id="nom" name="nom" required>
+                    <!-- <label for="name">Nom :</label> -->
+                    <input type="hidden" id="nom" name="nom" required>
 
-                    <label for="name">Prenom :</label>
-                    <input type="text" id="prenom" name="prenom" required>
+                    <!-- <label for="name">Prenom :</label> -->
+                    <input type="hidden" id="prenom" name="prenom" required>
                     
                     <label for="movie">Film :</label>
+
                     <select id="film" name="film" required>
+
                         <option value="1">Deadpool 2</option>
                         <option value="2">Dune </option>
                         <option value="3">Mission Impossible 2</option>
@@ -34,6 +36,15 @@
                         <option value="6">Avatar</option>
                         <option value="7">Ghostbusters</option>
                         <option value="8">Kung-Fu Panda 4</option>
+                        <option value="9">Aladin</option>
+                        <option value="10">Thunderbolts</option>
+                        <option value="11">Destination Finale</option>
+                        <option value="12">Shadow Force</option>
+                        <option value="13">Elevation</option>
+                        <option value="14">Underground</option>
+                        <option value="15">Gray Man</option>
+                        <option value="16">Red Notice</option>
+
                     </select>
                     
                     <label for="date">Date :</label>

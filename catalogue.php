@@ -14,7 +14,7 @@
         }
         else{
             error_log("[".date("d/m/o H:i:s e",time())."]  Client ".$_SERVER['REMOTE_ADDR']."\n\r",3, __DIR__."/../../../logs");
-            header("Location: erreur.php");
+            header("Location: catalogue.html");
             exit();
         }
     }
@@ -41,12 +41,12 @@
 
     <nav>
         <img class = "ImageLogo" src="./Images/cinepass.jpeg" alt="Erreur">
-        <a href="index.php">Accueil</a>
+        <a href="pagePrecieuse.php">Accueil</a>
         <a href="catalogue.php">Catalogue</a>
-        <a href="reservation.html">Faire une réservation</a>
-        <a href="formCreation.html">Créer un compte</a>
-        <a href="formConnexion.html">Se connecter</a>
-        <a href="infos.html">Nous joindre</a>
+        <a href="formReservation.php">Faire une réservation</a>
+        <a href="reservations.php">Vos réservations</a>
+        <a href="infosProtegee.php">Nous joindre</a>
+        <a href="deconnexion.php">Déconnexion</a>
     </nav>
 
     <header>
@@ -83,8 +83,9 @@
             <div class = text-Publicite>
                 <h2> Ne restez pas en retrait !!!!!</h2>
 
-                <p> Connectez vous pour voir une liste de films spécialement réservés pour vous ! 
-                    Nous avons une super élection qui devrait vous plaire. </p>
+                <p> Vous pouvez faire vos réservations en vous rendnat sur place également. La billetterie ouvre a tous les jours de de 8:00 à 21:00, a compter de 12:00 le samedi et dimanche, 
+                    elle ferme 15 minutes après la dernière représentation du jour.
+                    Horaire sujet a changement sans préavis. </p>
             </div>
         
 
@@ -118,6 +119,7 @@
             </ul>
         </div>
     </footer>
+
 </body>
 </html>
 </html>

@@ -11,6 +11,7 @@ $codeUtilisateur = $_POST['code'];
 $codeSession = $_SESSION['code'];
 $mail = $_SESSION['email'];
 $prenom = $_SESSION['prenom'];
+$nom = $_SESSION['nom'];
 $ip = $_SESSION['ip'];
 
 if ($codeUtilisateur == $codeSession) {
@@ -25,7 +26,6 @@ if ($codeUtilisateur == $codeSession) {
                 $parametresSession["path"], $parametresSession["domain"],
                 $parametresSession["secure"], $parametresSession["httponly"]
             );
-
             session_destroy(); //La session est effacée
     }
          
@@ -33,9 +33,9 @@ if ($codeUtilisateur == $codeSession) {
 
     $_SESSION['email'] = $mail;
     $_SESSION['prenom'] = $prenom;
+    $_SESSION['nom'] = $nom;
     $_SESSION['ip'] = $ip;
     
-
     header("Location: ../pagePrecieuse.php");
 
     exit();

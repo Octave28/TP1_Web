@@ -17,7 +17,8 @@ header{
 body {
     font-family: Arial, Helvetica, sans-serif;
     color: black;
-    margin: 20px;
+    /* margin: 20px; */
+    height: 100vh;
 }
 
 p{
@@ -54,8 +55,8 @@ p{
     align-items: center; /* Alignement des éléments en haut */
     gap: 20px; /* Espace entre le texte et les images */
     width: 95% ; /* Largeur maximale pour encadrer le contenu */
-    margin: 3% auto; /* Centrer le contenu */
-    padding: 20px; /* Espace intérieur */
+    padding: 3px; /* Espace intérieur */
+    margin-left: 3%;
 }
 
 /* Style pour le texte*/
@@ -63,6 +64,7 @@ p{
     padding: 1%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 
@@ -129,7 +131,10 @@ footer {
     display: flex; /* Utilisation de Flexbox pour aligner les colonnes */
     justify-content: space-between; /* Répartit l'espace entre les colonnes */
     flex-wrap: wrap; /* Permet aux colonnes de s'empiler sur les petits écrans */
-    font-family: Helvetica, sans-serif;;
+    font-family: Helvetica, sans-serif;
+    /* position : absolute; */
+    bottom : 10px; 
+    
 }
 
 /* Style pour chaque colonne (div) */

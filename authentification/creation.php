@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             //var_dump($nbIdentifiant);
 
             if ($nbIdentifiant->rowCount() > 1) {
-                echo "<h3><a href='../formCreation.html'> Cette adresse email existe déjà. Veuillez réessayer.</a></h3>";
+                echo "<h3><a href='../formCreation.php'> Cette adresse email existe déjà. Veuillez réessayer.</a></h3>";
             }
 
             else{
@@ -53,14 +53,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             
             if ($stmt->execute()) {
                 echo "<h2>Compte créé avec succès !</h2>";
-                echo "<h3><a href='../formConnexion.html'> Se connecter </a></h3>";
+                echo "<h3><a href='../formConnexion.php'> Se connecter </a></h3>";
             } else {
                 echo "<p>Erreur lors de la création du compte.</p>";
             }
             }
         } catch (PDOException $e) {
 
-            echo "<h3><a href='../formCreation.html'> Une erreur inconnue est survenue. Veuillez réessayer.</a></h3>";
+            echo "<h3><a href='../formCreation.php'> Une erreur inconnue est survenue. Veuillez réessayer.</a></h3>";
             #echo "Erreur de connexion à la base de données : " . $e->getMessage();
         }
     } else {

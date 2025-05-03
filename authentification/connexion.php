@@ -16,6 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $mdpBD = "b+zIQTikY5RX";
 
         try {
+
             $connexion = new PDO($dsn, $usager, $mdpBD);
             $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -35,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Si correct, j'enregistre le prénom et je crée une nouvelle session
 
                 $prenom = htmlspecialchars($user['prenom']);
+                $nom = htmlspecialchars($user['nom']);
 
                 require_once __DIR__."/sessionSet.include.php";
             
@@ -42,16 +44,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $_SESSION['email'] = $email;
                 $_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
                 $_SESSION['prenom'] = $prenom;
+                $_SESSION['nom'] = $nom;
                 header("Location: authentificationRedirect.php");
+
+                var_dump($_SESSION['prenom']);
 
             } else {
                 //Mauvais mot de passe, rediriger
-                echo"<h3><a href='../formConnexion.html'> Adresse email ou mot de passe incorrect. Veuillez réessayer.</a></h3>";
+                header("Location: ../formConnexion.php?erreur=login");
             }
 
         } catch (PDOException $e) {
             #echo "<p>Erreur de connexion à la base de données : " . $e->getMessage() . "</p>";
-            "<h3><a href='../formConnexion.html'> Une erreur est survenue. Veuillez réessayer.</a></h3>";
+            "<h3><a href='../formConnexion.php'> Une erreur est survenue. Veuillez réessayer.</a></h3>";
         }
     } else {
         echo "<p>Veuillez remplir tous les champs.</p>";
