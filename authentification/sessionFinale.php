@@ -7,7 +7,7 @@ if (!isset($_POST['code']) || !isset($_SESSION['prenom']) ) {
     header("Location:authentificationRedirect.php");
 }
 
-$codeUtilisateur = $_POST['code'];
+$codeUtilisateur = filter_input(INPUT_POST,"code",FILTER_VALIDATE_INT);
 $codeSession = $_SESSION['code'];
 $mail = $_SESSION['email'];
 $prenom = $_SESSION['prenom'];
@@ -35,13 +35,13 @@ if ($codeUtilisateur == $codeSession) {
     $_SESSION['prenom'] = $prenom;
     $_SESSION['nom'] = $nom;
     $_SESSION['ip'] = $ip;
-    
-    header("Location: ../pagePrecieuse.php");
 
+    error_log("[".date("d/m/o H:i:s e",time())."]  Client ".$_SERVER['REMOTE_ADDR']."\n\r",3, __DIR__."/../../../logs/Cinepass/authentificationReussies.log");
+    header("Location: ../pagePrecieuse.php");
     exit();
 
 } else {
-
-    echo "Code incorrect. <a href='formAuthentificationCode.php'>Réessayer</a>";
-
+    header("Location: formAuthentificationCode.php?erreur=1");
+    error_log("[".date("d/m/o H:i:s e",time())."]  Client ".$_SERVER['REMOTE_ADDR']."\n\r",3, __DIR__."/../../../logs/Cinepass/authentificationEchouees.log");
+    exit();
 }

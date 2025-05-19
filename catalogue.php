@@ -13,18 +13,13 @@
             $mail = $_SESSION['email'];
         }
         else{
-            error_log("[".date("d/m/o H:i:s e",time())."]  Client ".$_SERVER['REMOTE_ADDR']."\n\r",3, __DIR__."/../../../logs");
+            error_log("[".date("d/m/o H:i:s e",time())."]  Client ".$_SERVER['REMOTE_ADDR']."\n\r",3, __DIR__."/../../../logs/Cinepass/error.log");
             header("Location: catalogue.html");
             exit();
-        }
+        }       
     }
 
     require_once 'films.php';
-
-    $filmsAffiches = $films; // Par défaut, afficher tous les films
-    if (isset($_GET['recherche']) && !empty($_GET['recherche'])) {
-        $filmsAffiches = rechercherFilms($films, $_GET['recherche']);
-    }
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +27,7 @@
 <head>
     <link rel="stylesheet" href="css/style.css">
     <meta charset="UTF-8">
-    <script src="./dom.js"></script>
+    <script src="js/rechercheFilms.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A la une</title>
 </head>
@@ -56,20 +51,17 @@
     <main>
 
         <!-- Formulaire de recherche -->
-         
-        <div class="form-container2">
+        
+       <div class="form-container2">
             <div class="form-box" id="register-form">
-                 <form method="GET" action="">
-                    <input type="text" name="recherche" placeholder="Rechercher un film..." 
-                        value="<?= isset($_GET['recherche']) ? htmlspecialchars($_GET['recherche']) : '' ?>">
+                <form id="search-form">
+                    <input type="text" name="recherche" placeholder="Rechercher un film...">
                     <button type="submit">Rechercher</button>
-                    <?php if (isset($_GET['recherche']) && !empty($_GET['recherche'])): ?>
-                        <a href="catalogue.php" class="btn-annuler">Annuler la recherche</a>
-                    <?php endif; ?>
+                    <button type="button" onclick="AnnulerRecherche()" class="btn-annuler">Annuler</button>
                 </form>
             </div>
         </div>
-         
+ 
         <div class = catalogue>
             
             <!-- Affichage des films -->

@@ -1,5 +1,7 @@
 <?php
+require_once 'authentification/bdParams.php';
 require_once __DIR__ . "/authentification/sessionSet.include.php";
+
 session_start();
 
 if (session_status() == PHP_SESSION_ACTIVE) {
@@ -7,19 +9,12 @@ if (session_status() == PHP_SESSION_ACTIVE) {
     if (!isset($_SESSION['email']) || !isset($_SESSION['prenom']) || !isset($_SESSION['nom'])) {
         // Rediriger vers la page de connexion si non connecté
         header('Location: formConnexion.php');
-        exit();
-        
+        exit(); 
     }
 }
 
-define("BDSCHEMA", "akpachoh25techin_BD-Octave");
-define("BDSERVEUR", "127.0.0.1");
-$dsn = "mysql:dbname=" . BDSCHEMA . ";host=" . BDSERVEUR;
-$usager = "akpachoh25techin_UserLecture";
-$mdp = "b+zIQTikY5RX";
-
 try {
-    $connexion = new PDO($dsn, $usager, $mdp);
+    $connexion = new PDO($dsn, $usagerLecture, $mdp1BD);
     $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Prépare une requête pour récupérer seulement les réservations de l'utilisateur connecté
@@ -37,7 +32,8 @@ try {
     $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 } catch (PDOException $e) {
-    echo "Erreur de connexion : " . $e->getMessage();
+    error_log("Erreur de connexion à la base de données : " . $e->getMessage(), 3, __DIR__ . "/../../../logs/Cinepass/error.log");
+    error_log("[" . date("d/m/o H:i:s e", time()) . "]  Client " . $_SERVER['REMOTE_ADDR'] . "\n\r", 3, __DIR__ . "/../../../logs/Cinepass/error.log");
 }
 ?>
 

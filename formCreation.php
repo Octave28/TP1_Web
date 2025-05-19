@@ -1,3 +1,8 @@
+<?php
+    $erreur = filter_input(INPUT_GET,"erreur",FILTER_DEFAULT);
+    $erreur2 = filter_input(INPUT_GET,"erreur2",FILTER_DEFAULT);
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,6 +16,25 @@
         <div class="form-box" id="register-form">
             <h2>Créer un compte</h2>
             <form action="authentification/creation.php" method="POST" id="formCreation">
+
+                <div class="erreur">
+                    <?php 
+                        if (isset($erreur))
+                        {
+                            echo " Un compte avec cette adresse courriel existe déja ! ";
+                        } 
+                    ?>
+                </div>
+
+                <div class="erreur">
+                    <?php 
+                        if (isset($erreur2))
+                        {
+                            echo " Veuillez remplir tous les champs correctement ! ";
+                        } 
+                    ?>
+                </div>
+
                 <label for="Nom">Nom :</label>
                 <input type="nom" id="nom" name="nom" required>
 

@@ -13,6 +13,7 @@ if (session_status() == PHP_SESSION_ACTIVE) {
     if (isset($_SESSION['email']) && $_SESSION['nom'] && isset($_SESSION['prenom']) && isset($_SESSION['ip']) && $_SESSION['ip'] == $_SERVER['REMOTE_ADDR']) {
 
         $destinataire = $_SESSION['email']; // Utilisation de l'email en session
+        #$destinataire = "2309595@cegepat.qc.ca";
         $code = rand(100000, 999999);
         $_SESSION['code'] = $code;
         $prenom = $_SESSION['prenom'];
@@ -27,24 +28,25 @@ if (session_status() == PHP_SESSION_ACTIVE) {
 
             exit();
 
+            # Sinon  
         } else {
             echo "<p>Message non envoyé à " . htmlspecialchars($destinataire) . "</p>";
         }
     } else {   
         
-        echo"<h3><a href='authentificationRedirect.php'>Une erreur est servenue. Veuillez réessayer.</a></h3>";
+        header("Location: ../erreur.php");
        
     }
 }
  else {
-    echo"<h3><a href='formConnexion.html'> La session n'est plus active. Veuillez vous reconnecter.</a></h3>";
+    header("Location: ../erreur.php");
 }
 
 // Fonction d'envoi de mail
 function envoyerMail($to, $message) {
     $subject = 'Code de vérification';
     $headers = 
-        'From: info@cinepass.com' . "\r\n" .
+        'From: akpachoh25techin@techinfo420.ca' . "\r\n" .
         'X-Mailer: PHP/' . phpversion();
 
     return mail($to, $subject, $message, $headers);    

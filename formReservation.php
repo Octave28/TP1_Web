@@ -1,3 +1,25 @@
+<?php
+require_once __DIR__ . "/authentification/sessionSet.include.php";
+
+    session_start();
+
+    if (session_status() == PHP_SESSION_ACTIVE) {
+
+        // Vérifie si l'utilisateur est bien connecté (ex. par l'email stocké)
+
+        if (isset($_SESSION['email']) && isset($_SESSION['ip']) && $_SESSION['ip'] == $_SERVER['REMOTE_ADDR']) 
+        {
+            $mail = $_SESSION['email'];
+        }
+        else{
+            error_log("[".date("d/m/o H:i:s e",time())."]  Client ".$_SERVER['REMOTE_ADDR']."\n\r",3, __DIR__."/../../../logs/Cinepass/error.log");
+            header("Location: formConnexion.php");
+            exit();
+        }
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>

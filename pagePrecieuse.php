@@ -1,11 +1,9 @@
 <?php
     
     require_once 'films.php';
-    // $meilleursFilms = array_filter($films, function($film) {
-    //     return isset($film['labels']['oscars']);
-    // });
 
     require_once __DIR__ . "/authentification/sessionSet.include.php";
+    
     session_start();
     
     if (session_status() == PHP_SESSION_ACTIVE) {
@@ -18,11 +16,10 @@
             $mail = $_SESSION['email'];
         }
         else{
-            error_log("[".date("d/m/o H:i:s e",time())."]  Client ".$_SERVER['REMOTE_ADDR']."\n\r",3, __DIR__."/../../../logs");
+            error_log("[".date("d/m/o H:i:s e",time())."]  Client ".$_SERVER['REMOTE_ADDR']."\n\r",3, __DIR__."/../../../logs/Cinepass/error.log");
             header("Location: erreur.php");
             exit();
         }
-    
     }
 ?>
 

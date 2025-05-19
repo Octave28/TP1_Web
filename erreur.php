@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Une erreur ne vous permet pas d'accéder à cet application</h1>
-    <p>Vous devez vous connnecter pour accéder à notre catalogue</p>
+    <h1>Oups ! Erreur</h1>
+    <p>une erreur s'est produite. Veuillez réessayer !</p>
 </body>
 </html>

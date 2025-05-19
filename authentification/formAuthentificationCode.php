@@ -13,6 +13,8 @@
         exit();
     }
 
+ 
+    $erreur = filter_input(INPUT_GET,"erreur",FILTER_DEFAULT);
 
 ?>
 <!DOCTYPE html>
@@ -39,7 +41,11 @@
 
             <button type="submit">Valider</button> 
         </form>
-
+        <div class="erreur">
+            <?php if (isset($erreur)): ?>
+                <p>Code incorrect</p>
+            <?php endif; ?>
+        </div>
         <a href="authentificationRedirect.php" class="link">Demander un nouveau code</a>
     </div>
 

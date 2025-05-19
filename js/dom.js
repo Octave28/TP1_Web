@@ -1,4 +1,4 @@
-// Chamgement dynamique des images en arrière plan
+// // Chamgement dynamique des images en arrière plan
 
 const images = ["Images/avatar.jpg", "Images/Deadpool & Wolverine.jpg", "Images/Godzilla.jpg", "Images/joker.webp",  "Images/Ghostbusters.jpg", "Images/Underground.jpg",  "Images/elevation.jpg",  "Images/redNotice.avif" ];
 var index = 0;
